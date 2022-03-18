@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1030935209732",
+    "project_id": "sement-shop-management-711e9",
+    "storage_bucket": "sement-shop-management-711e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030935209732:android:ac852ef55e162a55815251",
+        "android_client_info": {
+          "package_name": "com.example.sement_shop_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030935209732-oq67k5lhqq0eg9hujhbqve15jfmbib5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwNXuAHSaiP1enxp_mMfiCFBB0wikLsvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030935209732-oq67k5lhqq0eg9hujhbqve15jfmbib5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
