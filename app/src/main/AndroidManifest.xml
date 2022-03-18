@@ -3,6 +3,7 @@
     package="com.example.sement_shop_management">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SEMENTShopManagement">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".CreatePengeluaranActivity"></activity>
+        <activity android:name=".CreatePenjualanActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,15 +4,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/Sement_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEMENT"
+            android:fontFamily="@font/asapsemibold"
+            android:textSize="30dp"
+            android:textColor="#19212F"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shop Management"
+            android:fontFamily="@font/asapmedium"
+            android:textSize="16dp"
+            android:textColor="#35425A"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/backgorund_primary"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Sement_text"
+        app:layout_constraintVertical_bias="0.01999998">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="46dp"
+                android:src="@drawable/penjualan_header" />
+
+            <TextView
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/asapmedium"
+                android:text="Data Penjualan"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="46dp"
+                android:src="@drawable/penngeluaran_header" />
+
+            <TextView
+                android:layout_width="82dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/asapmedium"
+                android:text="Data Pengeluaran"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_dashboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/button_create_data_penjualan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button_color"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:src="@drawable/penjualan_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Tambah Data Penjualan"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/asapsemibold"
+                android:textColor="#055FFC"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/button_create_data_pengeluaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button_color"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:src="@drawable/pengeluaran_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Tambah Data Pengeluaran"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/asapsemibold"
+                android:textColor="#055FFC"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
