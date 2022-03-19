@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateDataPengeluaranActivity"
+    tools:context=".CreatePengeluaranActivity"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
 
@@ -23,12 +23,13 @@
         app:layout_constraintVertical_bias="0.040000002">
 
         <ImageView
+            android:id="@+id/arr_back_pengluaran"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_arrow_back_ios" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewBackPengluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/asapmedium"
@@ -43,7 +44,7 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputNama"
+        android:id="@+id/inputNamaPengeluaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nama"
@@ -55,7 +56,7 @@
         app:layout_constraintVertical_bias="0.060000002" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputHarga"
+        android:id="@+id/inputHargaPengeluaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Harga"
@@ -63,11 +64,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputNama"
+        app:layout_constraintTop_toBottomOf="@+id/inputNamaPengeluaran"
         app:layout_constraintVertical_bias="0.06999999" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnSavePengeluaran"
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:layout_marginStart="8dp"
@@ -76,7 +77,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputHarga"
+        app:layout_constraintTop_toBottomOf="@+id/inputHargaPengeluaran"
         app:layout_constraintVertical_bias="0.886" />
 
 

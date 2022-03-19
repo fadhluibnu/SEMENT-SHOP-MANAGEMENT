@@ -18,5 +18,11 @@ class MainActivity : AppCompatActivity() {
         button_create_data_pengeluaran.setOnClickListener {
             startActivity(Intent(this, CreatePengeluaranActivity::class.java))
         }
+        to_pengeluaran.setOnClickListener {
+            startActivity(Intent(this, ReadPengeluaranActivity::class.java))
+        }
+        to_penjualan.setOnClickListener {
+            startActivity(Intent(this, ReadPenjualanActivity::class.java))
+        }
     }
 }
