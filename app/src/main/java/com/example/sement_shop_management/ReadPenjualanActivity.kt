@@ -35,6 +35,8 @@ class ReadPenjualanActivity : AppCompatActivity() {
             onBackPressed()
         }
         dbref = FirebaseDatabase.getInstance().getReference("data_penjualan")
+        listView = findViewById(R.id.rdpenjualan)
+        penjList = mutableListOf()
         getPenjualanData()
 
 //        button_dialog.setOnClickListener {
@@ -52,18 +54,17 @@ class ReadPenjualanActivity : AppCompatActivity() {
     }
 
     private fun getPenjualanData() {
-        listView = findViewById(R.id.rdpenjualan)
-        penjList = mutableListOf()
         dbref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
+                    penjList.clear()
                     for (hsl in snapshot.children){
                         val penjualan = hsl.getValue(Penjualan::class.java)
                         if(penjualan != null){
                             penjList.add(penjualan)
                         }
                     }
-                    val adapter = PenjualanAdapter(applicationContext, R.layout.list_barang_penjualan, penjList)
+                    val adapter = PenjualanAdapter(this@ReadPenjualanActivity, R.layout.list_barang_penjualan, penjList)
                     listView.adapter = adapter
                 }
             }

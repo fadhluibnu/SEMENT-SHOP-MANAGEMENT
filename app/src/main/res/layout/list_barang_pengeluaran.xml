@@ -8,20 +8,20 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/text_title_Pengeluaran"
+        android:id="@+id/text_title_pengeluaran"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="#2B2929"
         android:textSize="16dp"
         android:fontFamily="@font/asapmedium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/icon_edit"
+        app:layout_constraintEnd_toStartOf="@+id/icon_edit_pengeluaran"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55"
         android:text="Nama Barang Pengeluaran" />
     <ImageView
-        android:id="@+id/icon_edit"
+        android:id="@+id/icon_edit_pengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_edit"

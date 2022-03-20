@@ -1,7 +1,7 @@
 package com.example.sement_shop_management.read
 
-data class  Penjualan(var nama: String?= null, var harga: String?= null){
-    constructor():this("", ""){
+data class  Penjualan(var id : String, var nama: String, var harga: String){
+    constructor():this("", "", ""){
 
     }
 }

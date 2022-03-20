@@ -29,22 +29,23 @@ class ReadPengeluaranActivity : AppCompatActivity() {
             onBackPressed()
         }
         dbref = FirebaseDatabase.getInstance().getReference("data_pengeluaran")
+        listView = findViewById(R.id.rdpengeluaran)
+        pengList = mutableListOf()
         getPengeluaranData()
     }
 
     private fun getPengeluaranData() {
-        listView = findViewById(R.id.rdpengeluaran)
-        pengList = mutableListOf()
         dbref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
+                    pengList.clear()
                     for (hsl in snapshot.children){
                         val pengeluaran = hsl.getValue(Pengeluaran::class.java)
                         if(pengeluaran != null){
                             pengList.add(pengeluaran)
                         }
                     }
-                    val adapter = PengeluaranAdapter(applicationContext, R.layout.list_barang_pengeluaran, pengList)
+                    val adapter = PengeluaranAdapter(this@ReadPengeluaranActivity, R.layout.list_barang_pengeluaran, pengList)
                     listView.adapter = adapter
                 }
             }
