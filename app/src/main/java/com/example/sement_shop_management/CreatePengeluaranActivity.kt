@@ -36,7 +36,7 @@ class CreatePengeluaranActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         saveData()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, ReadPengeluaranActivity::class.java))
         finish()
     }
 

@@ -39,7 +39,7 @@ class CreatePenjualanActivity : AppCompatActivity(), View.OnClickListener {
 //    menjalankan saveData() saat button di klik
     override fun onClick(v: View?) {
         saveData()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, ReadPenjualanActivity::class.java))
         finish()
     }
 

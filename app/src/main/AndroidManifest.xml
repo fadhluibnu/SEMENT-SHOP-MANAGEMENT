@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SEMENTShopManagement">
-        <activity android:name=".ReadPenjualanActivity"></activity>
+        <activity android:name=".ReadPenjualanActivity"/>
         <activity android:name=".ReadPengeluaranActivity" />
         <activity android:name=".CreatePengeluaranActivity" />
         <activity android:name=".CreatePenjualanActivity" />
