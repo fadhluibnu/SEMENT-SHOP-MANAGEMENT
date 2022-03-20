@@ -1,42 +1,30 @@
 package com.example.sement_shop_management.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sement_shop_management.DataPengeluaran
 import com.example.sement_shop_management.R
 import com.example.sement_shop_management.read.Pengeluaran
+import com.example.sement_shop_management.read.Penjualan
 
-class PengeluaranAdapter(private val pengeluaranList: ArrayList<Pengeluaran>) :
-    RecyclerView.Adapter<PengeluaranAdapter.PengeluaranViewHolder>() {
+class PengeluaranAdapter(val mCtx: Context, val layoutResId: Int, val pnglist: List<Pengeluaran>): ArrayAdapter<Pengeluaran>(mCtx, layoutResId, pnglist){
 
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): PengeluaranViewHolder {
+        val view: View = layoutInflater.inflate(layoutResId, null)
+        val nama: TextView = view.findViewById(R.id.text_title_Pengeluaran)
 
-        val itemVIew = LayoutInflater.from(parent.context).inflate(R.layout.list_barang_pengeluaran, parent, false)
-        return PengeluaranViewHolder(itemVIew)
+        val penjualan = pnglist[position]
 
+        nama.text = penjualan.nama
+
+        return view
     }
 
-    override fun onBindViewHolder(holder: PengeluaranViewHolder, position: Int) {
-
-        val curretitem = pengeluaranList[position]
-        holder.nama.text = curretitem.nama
-
-    }
-
-    override fun getItemCount(): Int {
-        return pengeluaranList.size
-    }
-
-    class PengeluaranViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val nama: TextView = itemView.findViewById(R.id.text_title_Pengeluaran)
-
-    }
 }
