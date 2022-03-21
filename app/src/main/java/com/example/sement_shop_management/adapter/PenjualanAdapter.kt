@@ -13,6 +13,8 @@ import com.example.sement_shop_management.read.Penjualan
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.delete_dialog.view.*
+import kotlinx.android.synthetic.main.update_dialog.view.*
 
 class PenjualanAdapter(val mCtx: Context, val layoutResId: Int, val pnjlist: List<Penjualan>): ArrayAdapter<Penjualan>(mCtx, layoutResId, pnjlist) {
 
@@ -22,6 +24,7 @@ class PenjualanAdapter(val mCtx: Context, val layoutResId: Int, val pnjlist: Lis
         val view: View = layoutInflater.inflate(layoutResId, null)
         val nama: TextView = view.findViewById(R.id.text_title_penjualan)
         val edit: ImageView = view.findViewById(R.id.icon_edit_penjualan)
+        val delete: ImageView = view.findViewById(R.id.icon_delete_penjualan)
 
         val penjualan = pnjlist[position]
         nama.text = penjualan.nama
@@ -29,28 +32,55 @@ class PenjualanAdapter(val mCtx: Context, val layoutResId: Int, val pnjlist: Lis
         edit.setOnClickListener {
             showUpdateDialog(penjualan)
         }
+        delete.setOnClickListener {
+            setDeleteDialog(penjualan)
+        }
 
         return view
     }
 
-    fun showUpdateDialog(penjualan: Penjualan){
+    fun setDeleteDialog(penjualan: Penjualan){
+        val inflater = LayoutInflater.from(mCtx)
+        val view = inflater.inflate(R.layout.delete_dialog, null)
 
         val builder = AlertDialog.Builder(mCtx)
+        builder.setView(view)
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCancelable(false)
 
-        builder.setTitle("Edit Data : "+ penjualan.nama)
+        view.icon_delete_batal.setOnClickListener {
+            dialog.dismiss()
+        }
+        view.icon_delete_permanent.setOnClickListener {
+            val dbPenjualan = FirebaseDatabase.getInstance().getReference("data_penjualan").child(penjualan.id)
+            dbPenjualan.removeValue()
+
+            Toast.makeText(mCtx, "Data deleted!!", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+    }
+
+    fun showUpdateDialog(penjualan: Penjualan){
         val inflater = LayoutInflater.from(mCtx)
         val view = inflater.inflate(R.layout.update_dialog, null)
 
+        val builder = AlertDialog.Builder(mCtx)
+        builder.setView(view)
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCancelable(false)
+
         val etnama = view.findViewById<EditText>(R.id.editNamaPenjualan)
         val etharga = view.findViewById<EditText>(R.id.editHargaPenjualan)
-
-
+        val titleEdit = view.findViewById<TextView>(R.id.textView3)
         etnama.setText(penjualan.nama)
         etharga.setText(penjualan.harga)
+        titleEdit.setText("Edit Data : "+ penjualan.nama)
 
-        builder.setView(view)
-
-        builder.setPositiveButton("Update"){p0,p1 ->
+        view.icon_update.setOnClickListener {
             val db = FirebaseDatabase.getInstance().getReference("data_penjualan")
             val nama  = etnama.text.toString().trim()
             val harga = etharga.text.toString().trim()
@@ -58,42 +88,42 @@ class PenjualanAdapter(val mCtx: Context, val layoutResId: Int, val pnjlist: Lis
             if (nama.isEmpty()){
                 etnama.error = "Nama harus diisi"
                 etnama.requestFocus()
-                return@setPositiveButton
+                return@setOnClickListener
             }
             if (harga.isEmpty())  {
                 etharga.error = "Harga harus diisi"
                 etharga.requestFocus()
-                return@setPositiveButton
+                return@setOnClickListener
             }
             val penjualan = Penjualan(penjualan.id, nama, harga)
 
             db.child(penjualan.id).setValue(penjualan)
             Toast.makeText(mCtx, "Data Updated", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
         }
-        builder.setNegativeButton("No"){po,p1->
-
+        view.imageView_close_update.setOnClickListener {
+            dialog.dismiss()
         }
-        val alert = builder.create()
-        alert.show()
     }
 
-//    private fun showUpdateDialog(penjualan: Penjualan){
-//        val dialog = AlertDialog.Builder(mCtx)
+//    fun showUpdateDialog(penjualan: Penjualan){
 //
+//        val builder = AlertDialog.Builder(mCtx)
+//
+//        builder.setTitle("Edit Data : "+ penjualan.nama)
 //        val inflater = LayoutInflater.from(mCtx)
 //        val view = inflater.inflate(R.layout.update_dialog, null)
 //
-//        val btnClose = view.findViewById<ImageView>(R.id.arr_back_update_pengeluaran)
-//        val btnSave = view.findViewById<Button>(R.id.btnsaveEditPenjualan)
 //        val etnama = view.findViewById<EditText>(R.id.editNamaPenjualan)
 //        val etharga = view.findViewById<EditText>(R.id.editHargaPenjualan)
+//
 //
 //        etnama.setText(penjualan.nama)
 //        etharga.setText(penjualan.harga)
 //
+//        builder.setView(view)
 //
-//        dialog.setView(view)
-//        btnSave.setOnClickListener{
+//        builder.setPositiveButton("Update"){p0,p1 ->
 //            val db = FirebaseDatabase.getInstance().getReference("data_penjualan")
 //            val nama  = etnama.text.toString().trim()
 //            val harga = etharga.text.toString().trim()
@@ -101,28 +131,24 @@ class PenjualanAdapter(val mCtx: Context, val layoutResId: Int, val pnjlist: Lis
 //            if (nama.isEmpty()){
 //                etnama.error = "Nama harus diisi"
 //                etnama.requestFocus()
-//                return@setOnClickListener
+//                return@setPositiveButton
 //            }
 //            if (harga.isEmpty())  {
 //                etharga.error = "Harga harus diisi"
 //                etharga.requestFocus()
-//                return@setOnClickListener
+//                return@setPositiveButton
 //            }
 //            val penjualan = Penjualan(penjualan.id, nama, harga)
 //
 //            db.child(penjualan.id).setValue(penjualan)
 //            Toast.makeText(mCtx, "Data Updated", Toast.LENGTH_SHORT).show()
 //        }
-//
-//        dialog.setNegativeButton("Batal"){
-//            dialog, which ->
+//        builder.setNegativeButton("No"){po,p1->
 //
 //        }
-//
-//        val alert = dialog.create()
+//        val alert = builder.create()
 //        alert.show()
-//
-//
 //    }
+
 
 }
